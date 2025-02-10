@@ -1,0 +1,29 @@
+<div>
+  <input type="text" [(ngModel)]="city" placeholder="Enter city" />
+  <select [(ngModel)]="countryCode">
+    <option value="GB">GB</option>
+    <option value="US">US</option>
+  </select>
+  <button (click)="searchWeather()">Search</button>
+</div>
+
+<div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+
+<div *ngIf="weatherData;">
+  <h3>Weather in {{ city }}</h3>
+  <p>Temperature: {{ weatherData.current.temp }}K</p>
+  <p>Feels Like: {{ weatherData.current.feels_like }}K</p>
+  <p>Pressure: {{ weatherData.current.pressure }} hPa</p>
+  <p>Humidity: {{ weatherData.current.humidity }}%</p>
+  <p>Dew Point: {{ weatherData.current.dew_point }}K</p>
+
+
+
+</div>
+
+<ul *ngIf="weatherData; else noData">
+
+</ul>
+<ng-template #noData>
+  <p>No reservation available.</p>
+</ng-template>
